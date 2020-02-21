@@ -1,0 +1,343 @@
+@font-face {
+  font-family: Circular;
+  src: url("https://sp-bootstrap.global.ssl.fastly.net/8.9.0/fonts/circular-book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+html {
+  font-size: 10px;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Circular', 'Ionicons', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: #f0f2f7;
+  font-size: 1.6rem;
+  color: #323444;
+}
+
+.map, .info {
+  position: absolute;
+  top: 200px;
+  margin-bottom: 50px;
+  width: calc(50vw - 75px);
+  height: 500px;
+  min-height: 500px;
+}
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: calc(100% - 100px);
+  height: 100px;
+  text-align: center;
+  font-size: 80px;
+  line-height: 100px;
+}
+.logo .img {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: url("https://bit.ly/2PtLRfh");
+  background-size: cover;
+  margin-right: 10px;
+  transform: translateY(5px);
+}
+
+.map {
+  left: 50px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  background: url("https://bit.ly/32gOMgn");
+  background-size: cover;
+}
+.map .point {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #6d75c4;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 8px 18px rgba(0, 0, 0, 0.55);
+  font-size: 0;
+  border-radius: 100%;
+  transition: all .15s ease-in-out;
+}
+.map .point.bad {
+  background: #C46D6D;
+}
+.map .point.bad:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700%;
+  height: 700%;
+  transform: translateX(-50%) translateY(-50%);
+  background: rgba(196, 109, 109, 0.15);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(196, 109, 109, 0.05) 0%, rgba(196, 109, 109, 0.25) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(196, 109, 109, 0.05)), color-stop(100%, rgba(196, 109, 109, 0.25)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(196, 109, 109, 0.05) 0%, rgba(196, 109, 109, 0.25) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(196, 109, 109, 0.05) 0%, rgba(196, 109, 109, 0.25) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(196, 109, 109, 0.05) 0%, rgba(196, 109, 109, 0.25) 100%);
+  background: radial-gradient(ellipse at center, rgba(196, 109, 109, 0.05) 0%, rgba(196, 109, 109, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(196, 109, 109, 0.5);
+  border-radius: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .15s ease-in-out;
+}
+.map .point.mid {
+  background: #C4976D;
+}
+.map .point.mid:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700%;
+  height: 700%;
+  transform: translateX(-50%) translateY(-50%);
+  background: rgba(196, 151, 109, 0.15);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(196, 151, 109, 0.05) 0%, rgba(196, 151, 109, 0.25) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(196, 151, 109, 0.05)), color-stop(100%, rgba(196, 151, 109, 0.25)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(196, 151, 109, 0.05) 0%, rgba(196, 151, 109, 0.25) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(196, 151, 109, 0.05) 0%, rgba(196, 151, 109, 0.25) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(196, 151, 109, 0.05) 0%, rgba(196, 151, 109, 0.25) 100%);
+  background: radial-gradient(ellipse at center, rgba(196, 151, 109, 0.05) 0%, rgba(196, 151, 109, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(196, 151, 109, 0.5);
+  border-radius: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .15s ease-in-out;
+}
+.map .point.good {
+  background: #8AC46D;
+}
+.map .point.good:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700%;
+  height: 700%;
+  transform: translateX(-50%) translateY(-50%);
+  background: rgba(138, 196, 109, 0.15);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(138, 196, 109, 0.05) 0%, rgba(138, 196, 109, 0.25) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(138, 196, 109, 0.05)), color-stop(100%, rgba(138, 196, 109, 0.25)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(138, 196, 109, 0.05) 0%, rgba(138, 196, 109, 0.25) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(138, 196, 109, 0.05) 0%, rgba(138, 196, 109, 0.25) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(138, 196, 109, 0.05) 0%, rgba(138, 196, 109, 0.25) 100%);
+  background: radial-gradient(ellipse at center, rgba(138, 196, 109, 0.05) 0%, rgba(138, 196, 109, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(138, 196, 109, 0.5);
+  border-radius: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .15s ease-in-out;
+}
+.map .point:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700%;
+  height: 700%;
+  transform: translateX(-50%) translateY(-50%);
+  background: rgba(109, 117, 196, 0.15);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(109, 117, 196, 0.05) 0%, rgba(109, 117, 196, 0.25) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(109, 117, 196, 0.05)), color-stop(100%, rgba(109, 117, 196, 0.25)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(109, 117, 196, 0.05) 0%, rgba(109, 117, 196, 0.25) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(109, 117, 196, 0.05) 0%, rgba(109, 117, 196, 0.25) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(109, 117, 196, 0.05) 0%, rgba(109, 117, 196, 0.25) 100%);
+  background: radial-gradient(ellipse at center, rgba(109, 117, 196, 0.05) 0%, rgba(109, 117, 196, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(109, 117, 196, 0.5);
+  border-radius: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .15s ease-in-out;
+}
+.map .point.selected:before {
+  opacity: 1;
+}
+.map .pointDescription {
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  opacity: 0;
+  padding: 20px;
+  pointer-events: none;
+  color: #FFF;
+  transition: opacity .15s ease-in-out;
+}
+.map .pointDescription.active {
+  opacity: 1;
+}
+.map .pointDescription .l {
+  opacity: .5;
+}
+
+.info {
+  padding: 100px 50px 50px 50px;
+  right: 50px;
+  background: #FFF;
+  border-radius: 20px;
+}
+.info .title {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 2.5rem;
+}
+.info .canvas {
+  position: relative;
+  width: calc(100% - 100px);
+  height: calc(100% - 150px);
+  margin: 100px 50px 50px 50px;
+  box-shadow: inset 2px 0 0 0 rgba(0, 0, 0, 0.05), inset 0 -2px 0 0 rgba(0, 0, 0, 0.05);
+}
+
+.graph {
+  position: absolute;
+  top: 750px;
+  left: 50px;
+  margin-bottom: 50px;
+  width: calc(100% - 100px);
+  height: auto;
+  background: #FFF;
+  border-radius: 20px;
+}
+.graph .tabs {
+  padding: 50px;
+  width: 100%;
+  height: 80px;
+}
+.graph .tabs .block {
+  margin-right: 25px;
+}
+.graph .tabs .button {
+  background: #6d75c4;
+  color: #FFF;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-left: 15px;
+}
+.graph .tabs .button:after {
+  content: "\f35d";
+  padding-left: 10px;
+}
+.graph .tabs .filter {
+  background: rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-left: 15px;
+}
+.graph .tabs .filter .f {
+  background: #6d75c4;
+  color: #FFF;
+  padding: 5px 10px;
+  margin: 0 5px;
+  display: inline-block;
+  border-radius: 5px;
+}
+.graph .tabs .filter .f:after {
+  content: "x";
+  padding-left: 10px;
+}
+
+.sub {
+  font-size: 75%;
+  padding-left: .15rem;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.mid, .good, .bad {
+  border-radius: 5px;
+}
+
+.good {
+  background: rgba(128, 221, 82, 0.35);
+}
+
+.mid {
+  background: rgba(221, 149, 82, 0.35);
+}
+
+.bad {
+  background: rgba(221, 82, 82, 0.35);
+}
+
+.table {
+  margin: 0 0;
+  min-width: 400px;
+}
+.table tr {
+  border: none;
+}
+.table th {
+  display: none;
+}
+.table td {
+  display: block;
+}
+.table td:first-child {
+  padding-top: .5em;
+}
+.table td:last-child {
+  padding-bottom: .5em;
+}
+.table td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 6.5em;
+  display: inline-block;
+}
+@media (min-width: 600px) {
+  .table td:before {
+    display: none;
+  }
+}
+.table th, .table td {
+  text-align: left;
+}
+@media (min-width: 600px) {
+  .table th, .table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .table th:first-child, .table td:first-child {
+    padding-left: 0;
+  }
+  .table th:last-child, .table td:last-child {
+    padding-right: 0;
+  }
+}
+
+.table {
+  background: none;
+  overflow: hidden;
+}
+.table th, .table td {
+  margin: .5em 1em;
+}
+@media (min-width: 600px) {
+  .table th, .table td {
+    padding: 1em !important;
+  }
+}
